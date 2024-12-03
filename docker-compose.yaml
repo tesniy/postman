@@ -1,0 +1,15 @@
+version: "2.2"
+services:
+
+  # apache/kafka https://hub.docker.com/r/apache/kafka
+  kafka:
+    container_name: kafka
+    image: apache/kafka
+    networks:
+      - mojo
+    ports:
+      - "9092:9092/tcp"
+
+
+networks:
+  mojo:
