@@ -1,7 +1,7 @@
 version: "2.2"
 services:
 
-  # apache/kafka https://hub.docker.com/r/apache/kafka
+  # apache/kafka https://hub.docker.com/r/apache/kafka 111
   kafka:
     container_name: kafka
     image: apache/kafka
