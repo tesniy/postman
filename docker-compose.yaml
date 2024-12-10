@@ -10,6 +10,17 @@ services:
     ports:
       - "9092:9092/tcp"
 
+  # https://hub.docker.com/r/tekki/mojolicious
+  starman:
+    container_name: starman
+    image: tekki/mojolicious
+    ports:
+      - "80:80/tcp"
+    volumes:
+      - ./starman:/starman/
+      - ./mojo:/mojo/
+    command: >
+        bash -c "morbo -v -w my_app/lib/ -l http://*:80 ./my_app/script/my_app"
 
 networks:
   mojo:
