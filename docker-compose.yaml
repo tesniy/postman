@@ -20,7 +20,7 @@ services:
       - ./starman:/starman/
       - ./mojo:/mojo/
     command: >
-        bash -c "morbo -v -w my_app/lib/ -l http://*:80 ./my_app/script/my_app"
+        bash -c "morbo -v -w /mojo/my_app/lib/ -l http://*:80 /mojo/my_app/script/my_app"
 
 networks:
   mojo:
