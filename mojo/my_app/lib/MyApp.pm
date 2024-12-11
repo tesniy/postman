@@ -23,9 +23,9 @@ sub startup ($self) {
 	$r->post('/')->to( status => 200, json => { path => '/', type => 'post', status => 1, unique => $time } );
 
 	#
-	$r->get('/get')->to(   status => 200, json => { type => 'get',  path => '/get',  text => 'get 200' } );
-	$r->post('/post')->to( status => 200, json => { type => 'post', path => '/post', status => 1, unique => $time } );
-	$r->put('/put')->to(   status => 200, json => { type => 'put',  path => '/put',  status => 1, aarr => [ '1', '2', '3' ] } );
+	$r->get('/go')->to(   status => 200, json => { type => 'get',  path => '/get',  text => 'get 200' } );
+	$r->post('/print')->to( status => 200, json => { type => 'post', path => '/post', status => 1, unique => $time } );
+	$r->put('/update')->to(   status => 200, json => { type => 'put',  path => '/put',  status => 1, aarr => [ '1', '2', '3' ] } );
 }
 
 1;
