@@ -2,13 +2,13 @@ version: "2.2"
 services:
 
   # apache/kafka https://hub.docker.com/r/apache/kafka
-  kafka:
-    container_name: kafka
-    image: apache/kafka
-    networks:
-      - mojo
-    ports:
-      - "9092:9092/tcp"
+#  kafka:
+#    container_name: kafka
+#    image: apache/kafka
+#    networks:
+#      - mojo
+#    ports:
+#      - "9092:9092/tcp"
 
   # https://hub.docker.com/r/tekki/mojolicious
   starman:
@@ -21,6 +21,18 @@ services:
       - ./mojo:/mojo/
     command: >
         bash -c "morbo -v -w /mojo/my_app/lib/ -l http://*:80 /mojo/my_app/script/my_app"
+
+
+  # newman
+  newman:
+    container_name: newman
+    image: postman/newman
+    networks:
+      - mojo
+    volumes:
+      - ./newman:/newman/
+    entrypoint:
+      sh -c "while true; do sleep 2; done"
 
 networks:
   mojo:
