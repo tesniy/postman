@@ -33,6 +33,7 @@ services:
       - ./newman:/newman/
     entrypoint:
       sh -c "while true; do sleep 2; done"
+    # newman run --bail --verbose -e lk.postman_environment.json lk.postman_collection.json
 
 networks:
   mojo:
