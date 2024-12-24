@@ -1,0 +1,232 @@
+{
+	"info": {
+		"_postman_id": "ebc73b40-bbb6-4f00-a8ae-a13cf9a3b601",
+		"name": "docker1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36190370"
+	},
+	"item": [
+		{
+			"name": "Позитив",
+			"item": [
+				{
+					"name": "Проверка метода get",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test( \"Проверка метода Post Json\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    //const $ = cheerio.load(pm.response.text());\r",
+									"    //const title = $('title').text().trim();    \r",
+									"    //pm.expect(title).to.eql(\"Page Not Found (development mode)\");\r",
+									"    //\r",
+									"    //pm.expect(string).to.match(/((^[0-9]+[a-z]+)|(^[a-z]+[0-9]+))+[0-9a-z]+$/i);\r",
+									"    pm.expect( pm.response.text() ).to.match(/Welcome to the Mojolicious real-time web framework!/i); \r",
+									"}    \r",
+									"\r",
+									");"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Проверка go",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test( \"Проверка ответа Json\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.path).to.be.a(\"string\");\r",
+									"    pm.expect(jsonData.path).to.eql(\"/get\");\r",
+									"    pm.expect(jsonData.text).to.be.a(\"string\");\r",
+									"    pm.expect(jsonData.text).to.eql(\"get 200\");\r",
+									"    pm.expect(jsonData.type).to.be.a(\"string\");\r",
+									"    pm.expect(jsonData.type).to.eql(\"get\");    \r",
+									"}\r",
+									"\r",
+									");"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/go",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"go"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Проверка метода post",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test( \"Проверка метода Post Json\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.path).to.be.a(\"string\");\r",
+									"    pm.expect(jsonData.path).to.eql(\"/\");\r",
+									"    pm.expect(jsonData.status).to.be.a(\"number\");\r",
+									"    pm.expect(jsonData.status).to.eql(1);\r",
+									"    pm.expect(jsonData.type).to.be.a(\"string\");\r",
+									"    pm.expect(jsonData.type).to.eql(\"post\");    \r",
+									"    pm.expect(jsonData.unique).to.be.a(\"number\");\r",
+									"    //pm.expect(jsonData.unique).to.eql(1734962403);       \r",
+									"}\r",
+									"\r",
+									");"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Проверка print",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test( \"Проверка Print\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.path).to.be.a(\"string\");\r",
+									"    pm.expect(jsonData.path).to.eql(\"/post\");\r",
+									"    pm.expect(jsonData.status).to.be.a(\"number\");\r",
+									"    pm.expect(jsonData.status).to.eql(1);\r",
+									"    pm.expect(jsonData.type).to.be.a(\"string\");\r",
+									"    pm.expect(jsonData.type).to.eql(\"post\");    \r",
+									"    pm.expect(jsonData.unique).to.be.a(\"number\");\r",
+									"    //pm.expect(jsonData.unique).to.eql(1734962403);       \r",
+									"}\r",
+									"\r",
+									");"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/print",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"print"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Проверка update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test( \"Проверка метода Post Json\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"    //const $ = cheerio.load(pm.response.text());\r",
+									"    //const title = $('title').text().trim();    \r",
+									"    //pm.expect(title).to.eql(\"Page Not Found (development mode)\");\r",
+									"    pm.expect( pm.response.text() ).to.match(/Page Not Found \\(development mode\\)/i);\r",
+									"}\r",
+									"\r",
+									");"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/put",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"put"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Негатив",
+			"item": []
+		}
+	]
+}
