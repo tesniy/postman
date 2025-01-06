@@ -26,14 +26,15 @@ services:
   # newman
   newman:
     container_name: newman
-    image: postman/newman
-    networks:
-      - mojo
+    image: ventx/newman-reporter
     volumes:
-      - ./newman:/newman/
+      - ./newman:/etc/newman/
     entrypoint:
-      sh -c "while true; do sleep 2; done"
+      #run /newman/docker1.postman_collection.json --reporters cli;htmlextra --reporter-htmlextra-export "/newman/rep.html";
+      newman run /etc/newman/docker1.postman_collection.json --environment /etc/newman/env.json --reporters cli,htmlextra --reporter-htmlextra-export "/etc/newman/rep.html";
+      #sh -c "while true; do sleep 2; done"
+      #sh -c "while true; do sleep 2; done"
     # newman run --bail --verbose -e lk.postman_environment.json lk.postman_collection.json
 
 networks:
-  mojo:
+  mojooff:
